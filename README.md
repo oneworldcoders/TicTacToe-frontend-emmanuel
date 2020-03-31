@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TicTacToe-frontend-emmanuel
+A simple React app that utilises an existing API of tic tac toe to create the frontend app
+
 
 ## Available Scripts
 
@@ -15,7 +17,7 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can run `homebrew install watchman` incase you need to install watchman
 
 ### `npm run build`
 
