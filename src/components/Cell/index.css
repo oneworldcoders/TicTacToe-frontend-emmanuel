@@ -1,0 +1,10 @@
+.box {
+  flex-basis:33%;
+  background: #FFEBD9;
+  border: 1px black dashed;
+  text-align: center;
+  font-size: 2.5rem;
+  vertical-align: middle;
+  line-height: 130px;
+  cursor: pointer;
+}
