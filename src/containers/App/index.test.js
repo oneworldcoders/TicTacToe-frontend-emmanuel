@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import App from '.';
-import Board from '../Board';
-import Reset from '../Reset';
+import TicTacToe from '../TicTacToe';
+import { ToastContainer } from 'react-toastify';
 
 
 describe("App", () => {
@@ -13,14 +13,14 @@ describe("App", () => {
   test('renders without crashing', () => {
     wrapper = shallow(<App />);
   });
-  
-  test('renders the board', () => {
-    const board = wrapper.find(Board)
+
+  test('renders the tictactoe Container', () => {
+    const board = wrapper.find(TicTacToe)
     expect(board.length).toBe(1)
   });
 
-  test('renders the reset pane', () => {
-    const board = wrapper.find(Reset)
+  test('renders the ToastContainer ', () => {
+    const board = wrapper.find(ToastContainer)
     expect(board.length).toBe(1)
   });
 });

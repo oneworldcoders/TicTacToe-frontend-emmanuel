@@ -22,23 +22,31 @@ describe('Cell', () => {
 
 describe('When a mark is passed to it', () => {
   test('displays the mark X', () => {
-    let props = { mark: 'X' }
-    let wrapper = shallow(<Cell {...props}/>);
+    const props = { mark: 'X' }
+    const wrapper = shallow(<Cell {...props}/>);
     const div = wrapper.find('div')
     expect(div.text()).toBe("X")
   });
 
   test('displays the mark O', () => {
-    let props = { mark: 'O' }
-    let wrapper = shallow(<Cell {...props}/>);
+    const props = { mark: 'O' }
+    const wrapper = shallow(<Cell {...props}/>);
     const div = wrapper.find('div')
     expect(div.text()).toBe("O")
   });
 
   test('displays nothing when no mark', () => {
-    let wrapper = shallow(<Cell />);
+    const wrapper = shallow(<Cell />);
     const div = wrapper.find('div')
     expect(div.text()).toBe("")
   });
 
+  describe('ClickEvent', () => {
+    test('prop function is called', () => {
+      const props = { handleClick: jest.fn() }
+      const wrapper = shallow((<Cell {...props} />));
+      wrapper.find('div').simulate('click');
+      expect(props.handleClick).toHaveBeenCalled()
+    });
+  });
 });
