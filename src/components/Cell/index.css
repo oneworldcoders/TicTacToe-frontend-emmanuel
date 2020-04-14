@@ -1,0 +1,5 @@
+.box {
+  flex-basis:33%;
+  background: #FFEBD9;
+  border: 1px black dashed;
+}
