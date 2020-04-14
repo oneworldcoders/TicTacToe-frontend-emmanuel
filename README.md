@@ -1,6 +1,8 @@
 # TicTacToe-frontend-emmanuel
 A simple React app that utilises an existing API of tic tac toe to create the frontend app
 
+[![Build Status](https://travis-ci.org/oneworldcoders/TicTacToe-frontend-emmanuel.svg?branch=master)](https://travis-ci.org/oneworldcoders/TicTacToe-frontend-emmanuel)
+
 
 ## Available Scripts
 
