@@ -5,14 +5,16 @@ const responseHandler = {
 
   updateBoard(data, symbol, setSymbol, setBoard) {
     if(data.board) setBoard(data.board)
-    responseHandler.handleResponse(data, symbol, setSymbol)
+    data.symbol = symbol
+    data.setSymbol = setSymbol
+    this.handleResponse(data, this.switchSymbol, this.sendNotification)
   },
 
-  handleResponse(data, symbol, setSymbol) {
+  handleResponse(data, success, error) {
     if(data.message === 'Ok') {
-      responseHandler.switchSymbol(symbol, setSymbol)
+      success(data)
     } else {
-      responseHandler.sendNotification(data)
+      error(data)
     }
   },
 
@@ -24,9 +26,9 @@ const responseHandler = {
     }
   }, 
 
-  switchSymbol(symbol, setSymbol) {
-    const currentSymbol = (symbol === 'x') ? 'o' : 'x'
-    setSymbol(currentSymbol)
+  switchSymbol(data) {
+    const currentSymbol = (data.symbol === 'x') ? 'o' : 'x'
+    data.setSymbol(currentSymbol)
   }
 }
 

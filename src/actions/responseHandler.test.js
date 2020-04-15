@@ -2,17 +2,15 @@ import responseHandler from './responseHandler'
 
 describe('switchSymbol', () => {
   test('switches x to o', () => {
-    const symbol = 'x'
-    const setSymbol = jest.fn()
-    responseHandler.switchSymbol(symbol, setSymbol)
-    expect(setSymbol).toHaveBeenCalledWith('o')
+    const data = { symbol: 'x', setSymbol: jest.fn() }
+    responseHandler.switchSymbol(data)
+    expect(data.setSymbol).toHaveBeenCalledWith('o')
   });
 
   test('switches o to x', () => {
-    const symbol = 'o'
-    const setSymbol = jest.fn()
-    responseHandler.switchSymbol(symbol, setSymbol)
-    expect(setSymbol).toHaveBeenCalledWith('x')
+    const data = { symbol: 'o', setSymbol: jest.fn() }
+    responseHandler.switchSymbol(data)
+    expect(data.setSymbol).toHaveBeenCalledWith('x')
   });
 });
 
@@ -23,8 +21,10 @@ describe('updateBoard', () => {
     const setSymbol = jest.fn()
     const setBoard = jest.fn()
     const handleResponseSpy = jest.spyOn(responseHandler, 'handleResponse');
+    const switchSymbolSpy = jest.spyOn(responseHandler, 'switchSymbol');
+    const sendNotificationSpy = jest.spyOn(responseHandler, 'sendNotification');
     responseHandler.updateBoard(data, symbol, setSymbol, setBoard)
-    expect(handleResponseSpy).toHaveBeenCalledWith(data, symbol, setSymbol)
+    expect(handleResponseSpy).toHaveBeenCalledWith(data, switchSymbolSpy, sendNotificationSpy)
   });
 
   test('setBoard is called when board in data', () => {
@@ -47,21 +47,20 @@ describe('updateBoard', () => {
 });
 
 describe('handleResponse', () => {
-  test('switchSybol is called when message is OK', () => {
-    const data = { message: 'Ok' }
-    const symbol = 'x';
-    const setSymbol = jest.fn()
-    const handleResponseSpy = jest.spyOn(responseHandler, 'switchSymbol');
-    responseHandler.handleResponse(data, symbol, setSymbol)
-    expect(handleResponseSpy).toHaveBeenCalledWith(symbol, setSymbol)
-  });
+  beforeEach(() => {
+    const success = jest.fn()
+    const error = jest.fn()
 
-  test('sendNotification is called with data when message is not OK', () => {
-    const data = { message: '' }
-    const symbol = 'x';
-    const setSymbol = jest.fn()
-    const handleResponseSpy = jest.spyOn(responseHandler, 'sendNotification');
-    responseHandler.handleResponse(data, symbol, setSymbol)
-    expect(handleResponseSpy).toHaveBeenCalledWith(data)
-  });
+    test('success callback is called on error', () => {
+      const data = { message: 'Ok' }
+      responseHandler.handleResponse(data, success, error)
+      expect(success).toHaveBeenCalledWith(data)
+    });
+
+    test('error callback is called on error', () => {
+      const data = { message: '' }
+      responseHandler.handleResponse(data, success, error)
+      expect(error).toHaveBeenCalledWith(data)
+    });
+  })
 });

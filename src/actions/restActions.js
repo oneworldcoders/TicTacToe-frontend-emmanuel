@@ -1,7 +1,9 @@
 import responseHandler from './responseHandler'
+import dotenv from 'dotenv';
+dotenv.config();
 
 
-const base_url = 'http://localhost:9292/'
+const base_url = process.env.REACT_APP_BASE_URL;
 const reset_game_url = base_url+'reset_game';
 const play_url = base_url+'play';
 

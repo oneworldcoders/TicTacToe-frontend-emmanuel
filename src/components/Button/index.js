@@ -9,10 +9,10 @@ const btnStyle = {
 
 function Button(props) {
   return (
-    <div>
+    <div className="btn-container">
       <button
         className="btn"
-        style={(props.mark && props.symbol === props.mark.toLowerCase())? btnStyle : []}
+        style={(props.symbol === props.mark.toLowerCase())? btnStyle : []}
         onClick={() => props.handleClick() }>
           {props.mark}
       </button>
@@ -20,5 +20,9 @@ function Button(props) {
   );
 
 }
+
+Button.defaultProps = {
+  mark: ''
+};
 
 export default Button;

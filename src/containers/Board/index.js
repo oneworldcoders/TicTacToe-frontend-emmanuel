@@ -17,8 +17,12 @@ export default function Board(props) {
   return (
       <div className="board-container">
         <div className="game-baord">
-          {props.board && displayBoard(props) }
+          {displayBoard(props) }
         </div>
       </div>
   );
 }
+
+Board.defaultProps = {
+  board: []
+};

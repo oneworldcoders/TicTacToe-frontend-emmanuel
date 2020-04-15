@@ -14,14 +14,12 @@ function TicTacToe() {
       <div className="control-btns">
         <Button 
           mark="X" 
-          handleClick={() => {}} 
           symbol={symbol} />
         <Button
           mark="RESET"
           handleClick={() => resetBoard({ setBoard })} />
         <Button
           mark="O"
-          handleClick={() => {}} 
           symbol={symbol} />
       </div>
       <Board

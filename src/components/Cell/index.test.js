@@ -4,20 +4,11 @@ import Cell from '.'
 
 
 describe('Cell', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<Cell />);
-  });
-
-  test('renders without crashing', () => {
-    wrapper = shallow(<Cell />);
-  });
-
   test('renders a div', () => {
+    const wrapper = shallow(<Cell />);
     const button = wrapper.find('div')
     expect(button.length).toBe(1)
   });
-  
 });
 
 describe('When a mark is passed to it', () => {

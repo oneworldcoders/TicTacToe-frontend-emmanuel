@@ -4,20 +4,11 @@ import Button from '../Button';
 
 
 describe('Button', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<Button />);
-  });
-
-  test('renders without crashing', () => {
-    wrapper = shallow(<Button />);
-  });
-
   test('renders a button element', () => {
+    const wrapper = shallow(<Button />);
     const button = wrapper.find('div')
     expect(button.length).toBe(1)
   });
-  
 });
 
 describe('When a mark is passed to it', () => {
