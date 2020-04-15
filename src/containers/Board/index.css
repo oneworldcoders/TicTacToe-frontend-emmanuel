@@ -1,0 +1,12 @@
+.board-container{
+  height: 100%; 
+  display: flex; 
+  justify-content: center;
+}
+
+.game-baord{
+  width: 600px;
+  height: 400px;
+  display:flex;  
+  flex-wrap:wrap;
+}
